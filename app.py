@@ -324,7 +324,11 @@ def export_csv():
                     headers={"Content-Disposition": "attachment;filename=meteo_export.csv"})
 
 # ═══════════════════════ RUN ═══════════════════════
-init_db()
+
+try:
+    init_db()
+except Exception as e:
+    print("DB init failed:", e)
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
